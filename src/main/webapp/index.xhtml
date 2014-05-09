@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: jpicklyk
+  Date: 5/5/14
+  Time: 10:36 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Simple JSF Facelets page</title>
+    <h:outputScript library="js" name="jqplot.dateAxisRenderer.js"/>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h:form>
+            <p:commandButton value="Push data" actionListener="#{indexBean.pushData()}" ajax="true"/>
+        </h:form>
+        <p:chart type="line" model="#{indexBean.model}" style="width: 800px;" widgetVar="testChart"/>
+        <p:socket channel="/browser" onMessage="handleMessage"/>
+
+    </f:view>
+    <script type="text/javascript">
+        function handleMessage(pushData) {
+            var chart = PF('testChart').plot;            
+            var series = chart.series[0].data;            
+            series.push([pushData.x, pushData.y]);           
+            chart.series[0].data = series;
+            chart.resetAxesScale();
+            chart.replot();
+        }
+
+    </script>
+</h:body>
+
+</html>

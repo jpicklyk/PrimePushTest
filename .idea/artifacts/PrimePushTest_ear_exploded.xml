@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="PrimePushTest:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/PrimePushTest_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="PrimePushTest/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
