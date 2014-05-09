@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="PrimePushTest:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="PrimePushTest.war">
-      <element id="artifact" artifact-name="PrimePushTest:war exploded" />
-    </root>
-  </artifact>
-</component>
